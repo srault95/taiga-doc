@@ -126,3 +126,25 @@ has been developed by link:https://github.com/ipedrazas[Iván Pedrazas], link:ht
 has been developed by link:https://github.com/htdvisser[Hylke Visser], and
 link:https://github.com/benhutchins/docker-taiga[yet another docker script]
 has been developed by link:https://github.com/benhutchins[Benjamin Hutchins].
+
+Docker integration
+~~~~~~~~~~~~~~~~~~
+
+link:https://github.com/htdvisser/taiga-docker[Taiga back and frond with Docker Compose]
+
+[source, bash]
+----
+cd /home/persist
+mkdir taiga && cd taiga
+curl -o docker-compose.yml https://raw.githubusercontent.com/htdvisser/taiga-docker/stable/taiga.yml
+
+# edit docker-compose.yml file for customize
+
+docker-compose up -d
+
+docker exec -it taiga_taigaback_1 bash
+cd /usr/local/taiga/taiga-back/
+python manage.py loaddata initial_user
+python manage.py loaddata initial_project_templates
+python manage.py loaddata initial_role
+----
